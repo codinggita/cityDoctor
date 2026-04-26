@@ -1,61 +1,67 @@
-import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
-import DoctorCard from '../components/DoctorCard';
-
-const MOCK_DOCTORS = [
-  { id: 1, name: "Dr. Rohan Kapoor", specialty: "General Practitioner", costINR: 500, costUSD: 6, languages: ["ENGLISH", "MARATHI"], rating: 4.7, distance: 0.8, avatar: "https://randomuser.me/api/portraits/men/32.jpg" },
-  { id: 2, name: "Dr. Meera Iyer", specialty: "Pediatric Specialist", costINR: 600, costUSD: 7.2, languages: ["ENGLISH", "TAMIL"], rating: 5.0, distance: 2.4, avatar: "https://randomuser.me/api/portraits/women/44.jpg" }
-];
+import React from 'react';
+import TopNavbar from '../components/TopNavbar';
+import SearchDoctorCard from '../components/SearchDoctorCard';
+import { MOCK_DOCTORS } from '../utils/constants';
 
 const SearchPage = () => {
+  const filters = ['Distance', 'Price', 'Language', 'Rating'];
+
   return (
-    <div className="h-screen flex flex-col bg-white overflow-hidden">
-      <Navbar />
+    <div className="flex flex-col h-screen bg-[#F0F4F8] overflow-hidden">
+      <TopNavbar />
       
       <div className="grow flex overflow-hidden">
-        {/* Left Section: Map View */}
-        <div className="hidden lg:flex w-[45%] relative bg-[#4D8081]">
-          {/* Stylized Map Placeholder */}
-          <div className="absolute inset-0 opacity-40 pointer-events-none" style={{
-            backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-            backgroundSize: '30px 30px'
-          }}></div>
+        {/* Left: Map Section (Desktop Only) */}
+        <div className="hidden lg:flex w-[45%] relative bg-[#0D5C4A] overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
           
-          {/* Map Marker Placeholder */}
-          <div className="absolute top-[30%] left-[35%]">
-            <div className="bg-[#006B5E] text-white px-4 py-2 rounded-full font-bold text-xs shadow-xl flex items-center gap-2 border-2 border-white/20">
-              <span className="bg-white/20 p-1 rounded-md">➕</span>
-              Dr. Sharma
+          {/* Map Pins */}
+          <div className="absolute top-[35%] left-[40%] bg-white p-1 rounded-full shadow-2xl flex items-center gap-2 pr-4 border-2 border-slate-100 slide-up">
+            <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center overflow-hidden border">
+              <img src="https://ui-avatars.com/name/Dr+Kapoor" alt="Pin" />
             </div>
-            <div className="w-4 h-4 bg-white rounded-full mx-auto -mt-1 shadow-md border-2 border-[#006B5E]"></div>
+            <span className="text-[0.65rem] font-black tracking-tight text-slate-800">Dr. Kapoor</span>
           </div>
 
-          <div className="absolute bottom-[20%] left-[50%] w-4 h-4 bg-white rounded-full shadow-lg border-2 border-slate-200"></div>
+          <div className="absolute top-[60%] left-[25%] bg-white p-1 rounded-full shadow-2xl flex items-center gap-2 pr-4 border-2 border-slate-100 slide-up delay-150">
+            <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center overflow-hidden border">
+              <img src="https://ui-avatars.com/name/Dr+Sharma" alt="Pin" />
+            </div>
+            <span className="text-[0.65rem] font-black tracking-tight text-slate-800">Dr. Sharma</span>
+          </div>
 
           {/* Map Controls */}
           <div className="absolute bottom-8 left-8 flex gap-3">
-            <button className="bg-white text-slate-800 px-6 py-3 rounded-full font-bold text-sm shadow-xl flex items-center gap-2 hover:bg-slate-50 transition-all">
-              <span className="text-xl">🗺️</span> Satellite
+            <button className="bg-white/95 backdrop-blur-sm text-slate-800 px-6 py-3 rounded-full font-black text-[0.7rem] uppercase tracking-widest shadow-2xl flex items-center gap-2 hover:bg-white">
+              <span className="text-sm">🔭</span> Satellite
             </button>
-            <button className="bg-white text-slate-800 px-6 py-3 rounded-full font-bold text-sm shadow-xl flex items-center gap-2 hover:bg-slate-50 transition-all">
-              <span className="text-xl">📍</span> Recenter
+            <button className="bg-white/95 backdrop-blur-sm text-slate-800 px-6 py-3 rounded-full font-black text-[0.7rem] uppercase tracking-widest shadow-2xl flex items-center gap-2 hover:bg-white">
+              <span className="text-sm">📍</span> Recenter
             </button>
           </div>
         </div>
 
-        {/* Right Section: Results List */}
-        <div className="grow overflow-y-auto px-6 py-10 lg:px-12 bg-white">
+        {/* Right: Results Panel */}
+        <div className="grow overflow-y-auto px-6 py-8 lg:px-12 bg-white">
           <div className="max-w-3xl mx-auto">
-            <div className="flex justify-between items-center mb-8 px-2">
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">Specialists Nearby</h2>
-              <button className="text-slate-400 hover:text-slate-600">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+            {/* Filter Row */}
+            <div className="flex gap-2 overflow-x-auto no-scrollbar pb-6 mb-8 border-b border-slate-100">
+              <button className="bg-[#0F172A] text-white px-5 py-2 rounded-full font-black text-[0.65rem] uppercase tracking-[0.15em] flex items-center gap-2">
+                <span>⚡</span> Filters
               </button>
+              {filters.map(filter => (
+                <button key={filter} className="border border-slate-200 text-slate-500 px-4 py-2 rounded-full font-bold text-[0.7rem] flex items-center gap-2 hover:bg-slate-50 transition-colors">
+                  {filter} <span className="text-[0.5rem]">▼</span>
+                </button>
+              ))}
             </div>
+
+            <h2 className="text-3xl font-black text-[#0F172A] tracking-tighter mb-1">Specialists Nearby</h2>
+            <p className="text-[0.7rem] font-bold text-slate-400 uppercase tracking-widest mb-10">Found 12 doctors in Colaba, Mumbai</p>
 
             <div className="space-y-4">
               {MOCK_DOCTORS.map(doc => (
-                <DoctorCard key={doc.id} {...doc} />
+                <SearchDoctorCard key={doc.id} {...doc} distance={`${(Math.random() * 2).toFixed(1)} KM`} fee={doc.consultationFee} />
               ))}
             </div>
           </div>
