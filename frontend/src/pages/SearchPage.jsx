@@ -1,74 +1,56 @@
 import React from 'react';
-import TopNavbar from '../components/TopNavbar';
-import SearchDoctorCard from '../components/SearchDoctorCard';
-import { MOCK_DOCTORS } from '../utils/constants';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import DoctorGrid from '../components/DoctorGrid';
+import MapView from '../components/MapView';
+
 
 const SearchPage = () => {
-  const filters = ['Distance', 'Price', 'Language', 'Rating'];
 
   return (
-    <div className="flex flex-col h-screen bg-[#F0F4F8] overflow-hidden">
-      <TopNavbar />
+    <div className="min-h-screen bg-bgLight">
+      <Navbar />
       
-      <div className="grow flex overflow-hidden">
-        {/* Left: Map Section (Desktop Only) */}
-        <div className="hidden lg:flex w-[45%] relative bg-[#0D5C4A] overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-          
-          {/* Map Pins */}
-          <div className="absolute top-[35%] left-[40%] bg-white p-1 rounded-full shadow-2xl flex items-center gap-2 pr-4 border-2 border-slate-100 slide-up">
-            <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center overflow-hidden border">
-              <img src="https://ui-avatars.com/name/Dr+Kapoor" alt="Pin" />
-            </div>
-            <span className="text-[0.65rem] font-black tracking-tight text-slate-800">Dr. Kapoor</span>
-          </div>
+      <Hero 
+        title="Find Verified Specialists Nearby"
+        subtitle="Search through our curated list of English-speaking healthcare providers in Mumbai."
+      />
 
-          <div className="absolute top-[60%] left-[25%] bg-white p-1 rounded-full shadow-2xl flex items-center gap-2 pr-4 border-2 border-slate-100 slide-up delay-150">
-            <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center overflow-hidden border">
-              <img src="https://ui-avatars.com/name/Dr+Sharma" alt="Pin" />
-            </div>
-            <span className="text-[0.65rem] font-black tracking-tight text-slate-800">Dr. Sharma</span>
-          </div>
-
-          {/* Map Controls */}
-          <div className="absolute bottom-8 left-8 flex gap-3">
-            <button className="bg-white/95 backdrop-blur-sm text-slate-800 px-6 py-3 rounded-full font-black text-[0.7rem] uppercase tracking-widest shadow-2xl flex items-center gap-2 hover:bg-white">
-              <span className="text-sm">🔭</span> Satellite
-            </button>
-            <button className="bg-white/95 backdrop-blur-sm text-slate-800 px-6 py-3 rounded-full font-black text-[0.7rem] uppercase tracking-widest shadow-2xl flex items-center gap-2 hover:bg-white">
-              <span className="text-sm">📍</span> Recenter
-            </button>
-          </div>
+      <main className="px-8 pt-12 pb-32 max-w-7xl mx-auto">
+        <div className="mb-12 slide-up stagger-1">
+            <h3 className="text-xl font-display font-bold text-textMain mb-6">Explore Nearby Specialists</h3>
+            <MapView />
         </div>
+        <DoctorGrid />
 
-        {/* Right: Results Panel */}
-        <div className="grow overflow-y-auto px-6 py-8 lg:px-12 bg-white">
-          <div className="max-w-3xl mx-auto">
-            {/* Filter Row */}
-            <div className="flex gap-2 overflow-x-auto no-scrollbar pb-6 mb-8 border-b border-slate-100">
-              <button className="bg-[#0F172A] text-white px-5 py-2 rounded-full font-black text-[0.65rem] uppercase tracking-[0.15em] flex items-center gap-2">
-                <span>⚡</span> Filters
-              </button>
-              {filters.map(filter => (
-                <button key={filter} className="border border-slate-200 text-slate-500 px-4 py-2 rounded-full font-bold text-[0.7rem] flex items-center gap-2 hover:bg-slate-50 transition-colors">
-                  {filter} <span className="text-[0.5rem]">▼</span>
-                </button>
-              ))}
+        {/* Local Cost Guide (Green Theme) */}
+        <div className="mt-24 modern-card p-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+            <p className="text-xs font-bold tracking-[0.2em] mb-4 text-primary uppercase">Treatment Price Guide</p>
+            <h3 className="text-3xl font-display font-bold mb-10 text-textMain max-w-md">
+                Estimated medical costs in Mumbai South for international travelers.
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                <div className="bg-bgLight/50 p-6 rounded-2xl border border-borderSoft backdrop-blur-sm">
+                    <p className="text-xs font-bold text-textMuted uppercase tracking-widest mb-3">CONSULTATION</p>
+                    <p className="text-3xl font-bold text-primary">₹1,200 <span className="text-sm font-medium text-textMuted">/ average</span></p>
+                </div>
+                <div className="bg-bgLight/50 p-6 rounded-2xl border border-borderSoft backdrop-blur-sm">
+                    <p className="text-xs font-bold text-textMuted uppercase tracking-widest mb-3">DIAGNOSTICS</p>
+                    <p className="text-3xl font-bold text-primary">₹2,500 <span className="text-secondary text-xl ml-1">+</span></p>
+                </div>
             </div>
-
-            <h2 className="text-3xl font-black text-[#0F172A] tracking-tighter mb-1">Specialists Nearby</h2>
-            <p className="text-[0.7rem] font-bold text-slate-400 uppercase tracking-widest mb-10">Found 12 doctors in Colaba, Mumbai</p>
-
-            <div className="space-y-4">
-              {MOCK_DOCTORS.map(doc => (
-                <SearchDoctorCard key={doc.id} {...doc} distance={`${(Math.random() * 2).toFixed(1)} KM`} fee={doc.consultationFee} />
-              ))}
-            </div>
-          </div>
+            
+            <p className="mt-10 text-xs text-textMuted italic leading-relaxed">
+                *Rates are estimated based on local luxury healthcare providers. Actual costs may vary depending on clinic location and specific treatment needs.
+            </p>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
 
 export default SearchPage;
+
+
