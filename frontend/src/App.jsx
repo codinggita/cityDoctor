@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import FindDoctor from './pages/FindDoctor';
 import EmergencyHelp from './pages/EmergencyHelp';
@@ -23,8 +23,7 @@ import './index.css';
 
 function App() {
   return (
-    <Router>
-      <div className="bg-bgLight min-h-screen font-body selection:bg-primary/20 selection:text-primary">
+    <div className="bg-bgLight min-h-screen font-body selection:bg-primary/20 selection:text-primary">
         <ToastContainer />
         <Routes>
           {/* Main Public Routes */}
@@ -57,8 +56,7 @@ function App() {
           {/* 404 Redirect to Home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </div>
-    </Router>
+    </div>
   );
 }
 
