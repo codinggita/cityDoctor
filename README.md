@@ -1,140 +1,77 @@
-```markdown
 # 🏥 CityDoctor
 
 Helping Travelers Find Trusted Healthcare Anywhere
 
-# 📌 Problem Statement
+## 📌 Problem Statement
 
 Travelers—both international and domestic—often face serious challenges when they fall ill in unfamiliar cities. They struggle to:
 
-Identify trusted hospitals or clinics
-
-Find doctors who speak their language
-
-Understand treatment costs in advance
-
-Access reliable medical assistance quickly
+- Identify trusted hospitals or clinics
+- Find doctors who speak their language
+- Understand treatment costs in advance
+- Access reliable medical assistance quickly
 
 This lack of clarity and accessibility can lead to stress, delays in treatment, and poor healthcare decisions.
 
-# 💡 Solution: CityDoctor
+## 💡 Solution: CityDoctor
 
+CityDoctor is a platform designed to bridge this gap by helping travelers quickly connect with verified, English-speaking healthcare providers along with transparent pricing and essential details.
 
-CityDoctor is a platform designed to bridge this gap by helping travelers quickly connect with verified, 
+## 🚀 Key Features
 
-English-speaking healthcare providers along with transparent pricing and essential details.
+- **🔍 Search Nearby Doctors & Clinics**: Find trusted healthcare providers based on location.
+- **🌐 Language Support**: Filter doctors who speak English (or other preferred languages).
+- **💰 Transparent Pricing**: View estimated consultation and treatment costs upfront.
+- **✅ Verified Providers**: Only trusted and verified hospitals and doctors are listed.
+- **📞 Emergency Assistance / Helpline**: Quick access to medical support when needed.
+- **📍 Map Integration**: Navigate easily to nearby clinics or hospitals.
 
+## 🎯 Target Users
 
-# 🚀 Key Features
+- 🌍 International Travelers
+- 🧳 Domestic Tourists
+- 🎒 Students & Business Travelers
+- 🚑 Anyone in an unfamiliar city needing medical help
 
-🔍 Search Nearby Doctors & Clinics
+## 🛠️ Tech Stack
 
-Find trusted healthcare providers based on location.
+- **Frontend**: React.js / Vite
+- **Backend**: Node.js / Express
+- **Database**: MongoDB
+- **Design**: Figma
+- **Maps & Location**: Leaflet / OpenStreetMap API
 
-🌐 Language Support
+## 🔗 Important Links
 
-Filter doctors who speak English (or other preferred languages).
+- **🎨 Figma Design**: [View UI/UX Design](https://figma.com/design/Y0DBg2uPEGtj2sC3ePOUZ8/Untitled?node-id=9-101)
+- **⚡ Postman Collection**: [View API Documentation](https://documenter.getpostman.com/view/50839316/2sBXqKofER)
+- **🎥 Video Walkthrough**: [Watch on YouTube](https://youtu.be/ouEaW7kXlKA?si=5m7PE-Yg8Hm5VY6W)
 
-💰 Transparent Pricing
+### 🌐 Live Links
+- **Frontend (Live Demo)**: [https://frontend-chi-three-70.vercel.app](https://frontend-chi-three-70.vercel.app)
+- **Backend API**: [https://citydoctor.onrender.com](https://citydoctor.onrender.com)
 
-View estimated consultation and treatment costs upfront.
+## 📦 Installation
 
-✅ Verified Providers
-
-Only trusted and verified hospitals and doctors are listed.
-
-📞 Emergency Assistance / Helpline
-
-Quick access to medical support when needed.
-
-📍 Map Integration
-
-Navigate easily to nearby clinics or hospitals.
-
-🎯 Target Users
-
-🌍 International Travelers
-
-🧳 Domestic Tourists
-
-🎒 Students & Business Travelers
-
-🚑 Anyone in an unfamiliar city needing medical help
-
-🛠️ Tech Stack (Example)
-
-Frontend: React.js / Next.js
-
-Backend: Node.js / Express
-
-Database: MongoDB
-
-Design: Figma
-
-Maps & Location: Google Maps API
-
-🎨 Figma Design
-
-Explore the UI/UX design here:
-
-👉 https://figma.com/design/Y0DBg2uPEGtj2sC3ePOUZ8/Untitled?node-id=9-101
-
-
-Postman collection:
-
-https://documenter.getpostman.com/view/50839316/2sBXqKofER
-
-
-live demo:
-
-
-https://snazzy-sprinkles-0636d4.netlify.app/
-
-
-video walkthrough:
-
-https://youtu.be/ouEaW7kXlKA?si=5m7PE-Yg8Hm5VY6W
-
-
-beckend walkthrough:
-
-
-https://citydoctor.onrender.com/
-
-
-
-
-
-📦 Installation
-
+```bash
 # Clone the repository
-
 git clone https://github.com/pateldrup/cityDoctor.git
 
 # Navigate to project folder
-
-cd citydoctor
-
-# Install dependencies
-
+cd cityDoctor/backend
 npm install
-
-
-# Run the project
-
 npm start
 
-📈 Future Enhancements
-
-🧠 AI-based doctor recommendations
-
-💳 Online appointment booking & payments
-
-🗣️ Multi-language support
-
-⭐ User reviews & ratings system
-
-📲 Mobile app version
-
-ye  readme file thik de ban ke do 
+# In a new terminal, run frontend
+cd cityDoctor/frontend
+npm install
+npm run dev
 ```
+
+## 📈 Future Enhancements
+
+- 🧠 AI-based doctor recommendations
+- 💳 Online appointment booking & payments
+- 🗣️ Multi-language support
+- ⭐ User reviews & ratings system
+- 📲 Mobile app version
