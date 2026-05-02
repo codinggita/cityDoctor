@@ -10,11 +10,5 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist'
-  },
-  define: {
-    'process.env.NODE_ENV': JSON.stringify('production'),
-  },
-  optimizeDeps: {
-    include: ['axios'],
-  },
+  }
 })
