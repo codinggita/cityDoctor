@@ -2,6 +2,9 @@
 
 Helping Travelers Find Trusted Healthcare Anywhere
 
+<img width="1912" height="898" alt="image" src="https://github.com/user-attachments/assets/c3b0a43b-1c75-4de3-ae26-cbac130204fb" />
+
+
 ## 📌 Problem Statement
 
 Travelers—both international and domestic—often face serious challenges when they fall ill in unfamiliar cities. They struggle to:
